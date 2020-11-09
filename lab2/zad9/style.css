@@ -122,11 +122,13 @@ body {
     margin: auto;
     margin-top: 20px;
     transition: background-color 0.3s linear;
+    font-weight: 600;
 }
 
 .reserve:hover {
     cursor: pointer;
-    background-color: lightgrey;
+    background-color: #8217d4;
+    color: white;
 }
 
 ul {
