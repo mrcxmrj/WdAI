@@ -1,0 +1,66 @@
+* {
+    font-family: 'Roboto', sans-serif;
+}
+
+img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+h1 {
+    color: #34eb7d;
+    text-align: center;
+    padding: 40px;
+    font-size :40px;
+}
+
+a {
+    color: #34eb7d;
+}
+
+.box {
+    flex: 1;
+}
+
+.articles {
+    padding: 20px;
+}
+
+.hr {
+    border: 1px solid #495c50;
+}
+
+.gallery {
+    position: relative;
+}
+
+.gallery img {
+    width: 40%;
+    position: absolute;
+    padding: 10px;
+}
+
+.gallery img:hover {
+    z-index: 1;
+    border: solid 10px #4e4187;
+    cursor: pointer;
+}
+
+.content {
+    display: flex;
+    justify-content: space-between;
+}
+
+.one {
+    left: 5rem;
+}
+
+.two {
+    top: 5rem;
+    left: 25rem;
+}
+
+.three {
+    top: 15rem;
+    left: 15rem;
+}
