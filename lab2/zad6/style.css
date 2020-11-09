@@ -1,0 +1,63 @@
+.container {
+    display: flex;
+    justify-content: center;
+    margin-top: 200px;
+}
+.spinner {
+    width: 100px;
+    height: 100px;
+    align-items: center;
+    position: relative;
+
+    animation-name: rotating-animation;
+    animation-iteration-count: infinite;
+    animation-duration: 15s;
+    animation-timing-function: linear;
+}
+
+@keyframes rotating-animation {
+    0% {transform: rotate(0);}
+    25% {transform: rotate(45deg);}
+    50% {transform: rotate(270deg);}
+    75% {transform: rotate(180deg);}
+    100% {transform: rotate(360deg);}
+}
+
+.ball {
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    position: absolute;
+}
+
+.ball-1 {
+    background: purple;
+    top: -150%;
+    left: -50%;
+    z-index: 1;
+    opacity: 0.7;
+}
+
+.ball-2 {
+    background: yellow;
+    top: -50%;
+    left: 50%;
+    z-index: 2;
+    opacity: 0.7;
+}
+
+.ball-3 {
+    background: purple;
+    top: 50%;
+    left: -50%;
+    z-index: 3;
+    opacity: 0.7;
+}
+
+.ball-4 {
+    background: yellow;
+    top: -50%;
+    left: -150%;
+    z-index: 4;
+    opacity: 0.7;
+}
