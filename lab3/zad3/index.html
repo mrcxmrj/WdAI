@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>zad3</title>
+</head>
+<body>
+    <button type="button" onClick="increment()">+1</button>
+    <button type="button" id="dbutton">-1</button>
+    <button type="button" onClick="remove()">remove</button>
+    <p>Clicks: <a id="clickNumber">0</a></p>
+
+    <script type="text/javascript">
+        var counter = 0;
+        document.getElementById("dbutton").addEventListener("click", decrement);
+        //const btn = document.getElementById("clickNumber");
+        function increment() {
+            counter += 1;
+            document.getElementById("clickNumber").innerHTML = counter;
+        };
+        function decrement() {
+            counter -= 1;
+            document.getElementById("clickNumber").innerHTML = counter;
+        }
+        function remove() {
+            counter = 0;
+            document.getElementById("clickNumber").innerHTML = counter;
+            document.getElementById("dbutton").removeEventListener("click");
+        }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>zad4</title>
+</head>
+<body>
+    <button id="add">Dodaj</button>
+    <button id="remove">Usuń</button>
+
+    <ul id="list"></ul>
+
+    <script>
+        var addButton = document.getElementById("add");
+        var removeButton = document.getElementById("remove");
+        var list = document.getElementById("list");
+        var counter = 0;
+        
+        addButton.addEventListener("click", add);
+        removeButton.addEventListener("click", remove);
+
+        function remove() {
+            list.removeChild(list.childNodes[0]);
+        }
+
+        function add() {
+            var li = document.createElement('li');
+            li.textContent = counter;
+            list.appendChild(li);
+            counter++;
+        }
+    </script>
+</body>
+</html>
