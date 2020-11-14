@@ -6,27 +6,28 @@
     <title>zad3</title>
 </head>
 <body>
-    <button type="button" onClick="increment()">+1</button>
-    <button type="button" id="dbutton">-1</button>
-    <button type="button" onClick="remove()">remove</button>
+    <button type="button" id="incrementButton" onclick="increment()">+1</button>
+    <button type="button" onclick="reset()">remove/add</button>
     <p>Clicks: <a id="clickNumber">0</a></p>
 
     <script type="text/javascript">
         var counter = 0;
-        document.getElementById("dbutton").addEventListener("click", decrement);
-        //const btn = document.getElementById("clickNumber");
+        isConnected = new Boolean(true);
+
         function increment() {
             counter += 1;
             document.getElementById("clickNumber").innerHTML = counter;
         };
-        function decrement() {
-            counter -= 1;
-            document.getElementById("clickNumber").innerHTML = counter;
-        }
-        function remove() {
+
+        function reset() {
             counter = 0;
             document.getElementById("clickNumber").innerHTML = counter;
-            document.getElementById("dbutton").removeEventListener("click");
+            if(isConnected){
+                document.getElementById("incrementButton").removeAttribute("onclick");
+            } else {
+                document.getElementById("incrementButton").setAttribute("onclick", "increment()");
+            }
+            isConnected = !isConnected;
         }
 
     </script>
