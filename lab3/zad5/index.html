@@ -30,6 +30,22 @@
             margin: auto;
             color: #000;
         }
+        #propagationToggle {
+            background-color: green;
+            color: white;
+        }
+        button {
+            font-size: 20px;
+            padding: 10px;
+            border-radius: 10px;
+            cursor: pointer;
+            min-width: 183px;
+            outline: none;
+            transition: 0.5s filter ease-out, 0.5s -webkit-filter ease-out;
+        }
+        button:hover {
+            filter:blur(1px);
+        }
     </style>
     
 </head>
@@ -46,6 +62,10 @@
         </div>
         <p id="status">Zacznij klikać</p>
         <p id="scoreboard">Zacznij klikać</p>
+        <div class="buttons">
+            <button type="button" onclick="setEventListeners()" id="reset">reset</button>
+            <button type="button" onclick="setPropagation()" id="propagationToggle">propagation: true</button>
+        </div>
     </div>
     <script>
         var outerbtn = document.getElementById("outer");
@@ -53,40 +73,80 @@
         var innerbtn = document.getElementById("inner");
         var statusbox = document.getElementById("status");
         var scoreboard = document.getElementById("scoreboard");
+        var propagationbtn = document.getElementById("propagationToggle");
+
+        //var setting propagation mode
+        propagation = new Boolean(true);
+
+        function setPropagation() {
+            propagation = !propagation;
+            propagationbtn.innerHTML = "propagation: " + propagation;
+            if(propagation){
+                propagationbtn.setAttribute("style", "background-color: green");
+            } else {
+                propagationbtn.setAttribute("style", "background-color: red");
+            }
+            console.log("propagation" + propagation);
+        }
+
+        //vars handling score
         var score = 0;
+        s1 = new Boolean(true);
+        s2 = new Boolean(true);
+
+        //function vars to handle removing event listeners when using anonymous functions
+        var plus2 = function() {plus(2)};
+        var plus5 = function() {plus(5)};
+        var status2 = function() {changeStatus(2, "czerwony")};
+        var status5 = function() {changeStatus(5, "żółty")};
 
         outerbtn.addEventListener("click", function() {plus(1)});
         outerbtn.addEventListener("click", function() {changeStatus(1, "niebieski")}, true);
 
-        middlebtn.addEventListener("click", function() {plus(2)});
-        middlebtn.addEventListener("click", function() {changeStatus(2, "czerwony")}, true);
+        function setEventListeners() {
+            console.log("resetting event listeners");
+            s1 = s2 = true;
+            score = 0;
+            middlebtn.removeAttribute("style");
+            innerbtn.removeAttribute("style");
 
-        innerbtn.addEventListener("click", function() {plus(5)});
-        innerbtn.addEventListener("click", function() {changeStatus(5, "żółty")}, true);
+            middlebtn.addEventListener("click", plus2);
+            middlebtn.addEventListener("click", status2, true);
 
-        s1 = new Boolean(true);
-        s2 = new Boolean(true);
+            innerbtn.addEventListener("click", plus5);
+            innerbtn.addEventListener("click", status5, true);
+        }
+
+        setEventListeners()
 
         function plus(value) {
             console.log(value);
             score += value;
+            if(!propagation) {
+                event.stopPropagation();
+            }
 
             if(score>30 && s1) {
-            middlebtn.removeEventListener("click", function() {plus(2)});
-            console.log("obiekt nr 2 odpiety");
-            s1 = false;
+                middlebtn.removeEventListener("click", plus2);
+                middlebtn.removeEventListener("click", status2, true);
+                middlebtn.style.backgroundColor = "gray";
+                console.log("obiekt nr 2 odpiety");
+                s1 = false;
             }
 
             if(score>50 && s2) {
-            innerbtn.removeEventListener("click", function() {plus(5)});
-            console.log("obiekt nr 3 odpiety");
-            s2 = false;
+                innerbtn.removeEventListener("click", plus5);
+                innerbtn.removeEventListener("click", status5, true);
+                inner.style.backgroundColor = "lightgray";
+                console.log("obiekt nr 3 odpiety");
+                s2 = false;
             }
         }
         function changeStatus(value, color) {
             statusbox.innerHTML = "kliknąłeś " + color + " o wartości " + value;
             scoreboard.innerHTML = "aktualny wynik = " + score;
         }
+
     </script>
 </body>
 </html>
