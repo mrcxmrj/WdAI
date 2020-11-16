@@ -1,0 +1,32 @@
+{
+    "people": [
+        {
+        "name": "Ronda Brooks",
+        "age": 21
+        },
+        {
+        "name": "Bridgette Crawford",
+        "age": 37
+        },
+        {
+        "name": "Julie Jackson",
+        "age": 31
+        },
+        {
+        "name": "Henry Yates",
+        "age": 29
+        },
+        {
+        "name": "Margaret Payne",
+        "age": 38
+        },
+        {
+        "name": "Katelyn Carter",
+        "age": 24
+        },
+        {
+        "name": "Sandy Curry",
+        "age": 36
+        }
+    ]
+}

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="content">
+        <div id="jsondb"></div>
+        <div id="agestats"></div>
+        <div id="namesR"></div>
+        <div id="secondOldest"></div>
+        <div id="thirdYoungest"></div>
+    </div>
+    <script>
+        const url = "http://localhost:3000/people";
+
+        fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                let ageSum = 0;
+
+                //sort array by age for easier processing
+                data.sort((a, b) => parseFloat(a.age) - parseFloat(b.age));
+                console.log(data)
+
+                //add name_length to name and calculate the average age
+                for(index in data){
+                    data[index].name += " " + data[index].name.length.toString();
+                    //console.log(data[index].name)
+                    
+                    ageSum += data[index].age;
+                }
+                let averageAge = ageSum / data.length;
+
+                //display the data
+                document.getElementById("jsondb").innerHTML = "<h1>Dane osób</h1>" + JSON.stringify(data)
+               /*  document.getElementById("agestats").innerHTML = 
+                document.getElementById("namesR").innerHTML = 
+                document.getElementById("secondOldest").innerHTML = 
+                document.getElementById("thirdYoungest").innerHTML =  */
+            })
+    </script>
+</body>
+</html>
