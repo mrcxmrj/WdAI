@@ -20,26 +20,30 @@
             .then(response => response.json())
             .then(data => {
                 let ageSum = 0;
+                let containingR = []
 
                 //sort array by age for easier processing
                 data.sort((a, b) => parseFloat(a.age) - parseFloat(b.age));
                 console.log(data)
 
-                //add name_length to name and calculate the average age
+                //add name_length to name and calculate the average age; put names containing "r" in containingR
                 for(index in data){
                     data[index].name += " " + data[index].name.length.toString();
                     //console.log(data[index].name)
-                    
                     ageSum += data[index].age;
+
+                    if(data[index].name.includes("r")){
+                        containingR.push(data[index].name)
+                    }
                 }
                 let averageAge = ageSum / data.length;
 
                 //display the data
-                document.getElementById("jsondb").innerHTML = "<h1>Dane osób</h1>" + JSON.stringify(data)
-               /*  document.getElementById("agestats").innerHTML = 
-                document.getElementById("namesR").innerHTML = 
-                document.getElementById("secondOldest").innerHTML = 
-                document.getElementById("thirdYoungest").innerHTML =  */
+                document.getElementById("jsondb").innerHTML = "<h2>Dane osób</h2>" + JSON.stringify(data)
+                document.getElementById("agestats").innerHTML = "<h2>Średni wiek</h2>" + averageAge.toString()
+                document.getElementById("namesR").innerHTML = "<h2>Osoby, których imię zawiera 'r'</h2>" + containingR
+                document.getElementById("secondOldest").innerHTML = "<h2>Druga najstarsza</h2>" + JSON.stringify(data.slice(-2, -1))
+                document.getElementById("thirdYoungest").innerHTML = "<h2>Trzecia najmłodsza</h2>" + JSON.stringify(data[3])
             })
     </script>
 </body>
