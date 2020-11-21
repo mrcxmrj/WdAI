@@ -41,7 +41,12 @@ form.addEventListener("submit", (event) => {
 
     if (messages.length > 0) {
         event.preventDefault();
-        const message = "Podaj " + messages.join(", ") + ". " + passwordMessages.join(". ") + "."
+        const message =
+            "Podaj " +
+            messages.join(", ") +
+            ". " +
+            passwordMessages.join(". ") +
+            ".";
         alert(message);
         return;
     }
