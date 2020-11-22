@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>zad9</title>
+
+        <link
+            rel="stylesheet"
+            href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+            integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+            crossorigin="anonymous"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+            integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
+            crossorigin="anonymous"
+        />
+
+        <style>
+            .container {
+                padding: 20px;
+            }
+            #form {
+                margin-top: 10px;
+            }
+            .list-group-item > .content::first-line {
+                font-weight: bold;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <header>
+                <h1 class="text-success">Książka telefoniczna</h1>
+            </header>
+            <div class="list">
+                <ul class="list-group">
+                    <li class="list-group-item d-flex justify-content-between">
+                        <div class="content">
+                            Imię Nazwisko <br />
+                            nr telefonu
+                        </div>
+                        <button
+                            type="button"
+                            class="btn btn-danger"
+                            onclick="removeItem(this)"
+                        >
+                            <i class="fa fa-trash" aria-hidden="true"></i>
+                        </button>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between">
+                        <div class="content">
+                            Imię Nazwisko <br />
+                            nr telefonu
+                        </div>
+                        <button
+                            type="button"
+                            class="btn btn-danger"
+                            onclick="removeItem(this)"
+                        >
+                            <i class="fa fa-trash" aria-hidden="true"></i>
+                        </button>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between">
+                        <div class="content">
+                            Imię Nazwisko <br />
+                            nr telefonu
+                        </div>
+                        <button
+                            type="button"
+                            class="btn btn-danger"
+                            onclick="removeItem(this)"
+                        >
+                            <i class="fa fa-trash" aria-hidden="true"></i>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+            <div id="form">
+                <form class="form-inline">
+                    <div class="form-group mb-2">
+                        <label for="name" class="sr-only"
+                            >Imię i nazwisko</label
+                        >
+                        <input
+                            type="text"
+                            class="form-control"
+                            id="name"
+                            placeholder="Imię i nazwisko"
+                        />
+                    </div>
+                    <div class="form-group mx-sm-3 mb-2">
+                        <label for="phone" class="sr-only">Telefon</label>
+                        <input
+                            type="tel"
+                            class="form-control"
+                            id="phone"
+                            placeholder="Telefon"
+                        />
+                    </div>
+                    <button type="submit" class="btn btn-success mb-2">
+                        Dodaj
+                    </button>
+                </form>
+            </div>
+        </div>
+        <script src="script.js"></script>
+    </body>
+</html>
