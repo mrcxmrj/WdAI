@@ -1,7 +1,7 @@
 <div class="input-group mb-3">
   <select class="custom-select" id="inputGroupSelect01" #brandSelect
     (change)="getModelsByBrand(brandSelect.value); updateChoice(0,brandSelect.value)">
-    <option selected>Wybierz markę</option>
+    <option selected disabled>Wybierz markę</option>
     <option *ngFor="let brand of brands" value="{{ brand }}">
       {{ brand }}
     </option>
@@ -11,7 +11,7 @@
 <div class="input-group mb-3">
   <select class="custom-select" id="inputGroupSelect02" #modelSelect
     (change)="getAvaiableColorsByModel(brandSelect.value, modelSelect.value); updateChoice(1,modelSelect.value)">
-    <option selected>Wybierz markę</option>
+    <option selected disabled>Wybierz model</option>
     <option *ngFor="let model of models" value="{{ model }}">
       {{ model }}
     </option>
@@ -20,14 +20,14 @@
 
 <div class="input-group mb-3">
   <select class="custom-select" id="inputGroupSelect03" #colorSelect (change)="updateChoice(2,colorSelect.value)">
-    <option selected>Wybierz markę</option>
+    <option selected disabled>Wybierz kolor</option>
     <option *ngFor="let color of availableColors" value="{{ color }}">
       {{ color }}
     </option>
   </select>
 </div>
 
-<div class="card">
+<div class="card" *ngIf="showResult">
   <div class="card-body">
     <h5 class="card-title">
       Wybrano:
