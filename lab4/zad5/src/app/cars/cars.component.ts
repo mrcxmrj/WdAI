@@ -20,6 +20,7 @@ export class CarsComponent implements OnInit {
   models: string[] = [];
   availableColors: Colors[] = [];
   choice: string[] = ['marka', 'model', 'kolor'];
+  showResult: boolean = false;
 
   constructor() {}
 
@@ -60,6 +61,10 @@ export class CarsComponent implements OnInit {
   }
 
   updateChoice(index: number, selected: string): void {
+    this.showResult = false;
+    if (index == 2) {
+      this.showResult = true;
+    }
     this.choice[index] = selected;
     console.log(this.choice);
   }
