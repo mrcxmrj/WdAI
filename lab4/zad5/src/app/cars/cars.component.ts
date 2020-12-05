@@ -1,7 +1,6 @@
 import { Colors } from './../colors';
 import { CARS } from './../carData';
 import { Component, OnInit } from '@angular/core';
-import { Car } from '../car';
 
 @Component({
   selector: 'app-cars',
@@ -9,12 +8,6 @@ import { Car } from '../car';
   styleUrls: ['./cars.component.css'],
 })
 export class CarsComponent implements OnInit {
-  testCar: Car = {
-    brand: 'Fiat',
-    model: '126p',
-    availableColors: [Colors.Blue, Colors.Red],
-  };
-
   cars = CARS;
   brands: string[] = [];
   models: string[] = [];
