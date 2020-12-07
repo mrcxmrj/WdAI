@@ -1,25 +1,31 @@
 <h3>dostępne wycieczki:</h3>
 
 <div class="tripList">
-    <div class="card mb-3" style="max-width: 540px;" *ngFor="let trip of trips">
+    <div style="max-width: 540px;" *ngFor="let trip of trips"
+        [className]="(trip === cheapestTrip) ? 'card mb-3 border-success' : (trip === mostExpensiveTrip) ? 'card mb-3 border-danger' : 'card mb-3'">
         <div class="row no-gutters">
             <div class="col-md-4">
                 <img src="{{trip.imgLink}}" class="card-img" alt="{{ trip.countryOfDestination }}">
             </div>
             <div class="col-md-8">
                 <div class="card-body">
-                    <h5 class="card-title">{{ trip.name }}</h5>
+                    <h5 class="card-title">{{ trip.name | uppercase}}</h5>
+                    <p class="card-text">{{ trip.countryOfDestination | uppercase }}<br>{{ trip.price + "zł" }}</p>
                     <p class="card-text">{{ trip.description }}</p>
                     <p class="card-text"><i class="fa fa-plus" aria-hidden="true"
                             *ngIf="trip.spotsAvailable && (trip.spotsSelected + 1 <= trip.spotsAvailable)"
                             (click)="incrementSpotsSelected(trip)"></i>
-                        {{ " " + trip.spotsSelected + " " }}
+                        <span
+                            [className]="(trip.spotsSelected<10) ? 'text-danger' : 'text-success'">{{ " " + trip.spotsSelected + " " }}</span>
                         <i class="fa fa-minus" aria-hidden="true" (click)="decrementSpotsSelected(trip)"
-                            *ngIf="trip.spotsAvailable !== trip.spotsMax"></i></p>
+                            *ngIf="trip.spotsAvailable !== trip.spotsMax && trip.spotsSelected > 0"></i></p>
                     <p class="card-text" *ngIf="trip.spotsAvailable !== 0; else elseBlock"><small
-                            class="text-muted">Wolne
-                            miejsca:
-                            {{ trip.spotsAvailable + "/" + trip.spotsMax }}</small></p>
+                            class="text-muted"><span class="kolorki"
+                                [ngClass]="{ 'text-danger' : trip.spotsAvailable < 3 }">
+                                Wolne
+                                miejsca:
+
+                                {{ trip.spotsAvailable + "/" + trip.spotsMax }}</span></small></p>
                     <ng-template #elseBlock>
                         <p class="card-text"><small class="text-muted">Wycieczka wyprzedana</small></p>
                     </ng-template>

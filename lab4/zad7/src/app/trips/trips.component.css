@@ -14,3 +14,11 @@ img {
 .fa {
   cursor: pointer;
 }
+
+.cheapest {
+  color: green;
+}
+
+.mostExpensive {
+  color: red;
+}

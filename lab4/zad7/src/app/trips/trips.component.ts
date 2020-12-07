@@ -8,12 +8,19 @@ import { Trip } from './trip';
   styleUrls: ['./trips.component.css'],
 })
 export class TripsComponent implements OnInit {
-  trips: Trip[] = TRIPS;
+  trips: Trip[];
+  cheapestTrip: Trip;
+  mostExpensiveTrip: Trip;
 
-  constructor() {}
+  constructor() {
+    this.trips = TRIPS;
+    this.cheapestTrip = this.trips[0];
+    this.mostExpensiveTrip = this.trips[0];
+  }
 
   ngOnInit(): void {
     console.log(this.trips);
+    this.getCheapestAndMostExpensive();
   }
 
   incrementSpotsSelected(trip: any) {
@@ -24,5 +31,18 @@ export class TripsComponent implements OnInit {
   decrementSpotsSelected(trip: any) {
     trip.spotsSelected -= 1;
     trip.spotsAvailable += 1;
+  }
+
+  getCheapestAndMostExpensive(): void {
+    for (let trip of this.trips) {
+      if (trip.price < this.cheapestTrip.price) {
+        this.cheapestTrip = trip;
+      }
+      if (trip.price > this.mostExpensiveTrip.price) {
+        this.mostExpensiveTrip = trip;
+      }
+    }
+    console.log(this.cheapestTrip);
+    console.log(this.mostExpensiveTrip);
   }
 }
