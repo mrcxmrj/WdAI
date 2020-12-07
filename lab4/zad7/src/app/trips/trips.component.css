@@ -1,0 +1,16 @@
+.tripList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1em;
+}
+
+img {
+  max-height: 100%;
+  max-width: auto;
+  border-radius: 50%;
+  padding: 20px;
+}
+
+.fa {
+  cursor: pointer;
+}
