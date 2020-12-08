@@ -12,6 +12,9 @@
                     <h5 class="card-title">{{ trip.name | uppercase}}</h5>
                     <p class="card-text">{{ trip.countryOfDestination | uppercase }}<br>{{ trip.price + "zł" }}</p>
                     <p class="card-text">{{ trip.description }}</p>
+                    <p class="card-text"><small
+                            class="text-muted">{{ trip.startDate.getDate().toString() + "/" + trip.startDate.getMonth().toString()+ "/" + trip.startDate.getFullYear().toString() + " - " + trip.endDate.getDate() + "/" + trip.endDate.getMonth().toString()+ "/" + trip.endDate.getFullYear().toString()}}</small>
+                    </p>
                     <p class="card-text"><i class="fa fa-plus" aria-hidden="true"
                             *ngIf="trip.spotsAvailable && (trip.spotsSelected + 1 <= trip.spotsAvailable)"
                             (click)="incrementSpotsSelected(trip)"></i>
@@ -30,9 +33,51 @@
                         <p class="card-text"><small class="text-muted">Wycieczka wyprzedana</small></p>
                     </ng-template>
                     <button type="button" class="btn btn-danger" (click)="removeTrip(trip)">Usuń</button>
-
                 </div>
             </div>
         </div>
     </div>
+</div>
+
+<div class="card-body card addTrip">
+    <h4>Dodaj nową wycieczkę</h4>
+    <form [formGroup]="newTripForm" (ngSubmit)="addNewTrip()">
+        <div class="form-group">
+            <label>Nazwa</label>
+            <input class="form-control" type="text" formControlName="name">
+        </div>
+        <div class="form-group">
+            <label>Kraj docelowy</label>
+            <input class="form-control" type="text" formControlName="countryOfDestination">
+        </div>
+        <div class="form-group">
+            <label>Data rozpoczęcia</label>
+            <input class="form-control" type="date" formControlName="startDate">
+        </div>
+        <div class="form-group">
+            <label>Data zakończenia</label>
+            <input class="form-control" type="date" formControlName="endDate">
+        </div>
+        <div class="form-group">
+            <label>Cena</label>
+            <input class="form-control" type="number" formControlName="price">
+        </div>
+        <div class="form-group">
+            <label>Liczba dostępnych miejsc</label>
+            <input class="form-control" type="number" formControlName="spotsAvailable">
+        </div>
+        <div class="form-group">
+            <label>Maksymalna liczba miejsc</label>
+            <input class="form-control" type="number" formControlName="spotsMax">
+        </div>
+        <div class="form-group">
+            <label>Opis</label>
+            <input class="form-control" type="text" formControlName="description">
+        </div>
+        <div class="form-group">
+            <label>Link do zdjęcia</label>
+            <input class="form-control" type="text" formControlName="imgLink">
+        </div>
+        <button type="submit" class="btn btn-secondary">Dodaj</button>
+    </form>
 </div>
